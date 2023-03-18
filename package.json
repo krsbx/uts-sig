@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:krsbx/uts-sig.git",
-  "author": "krsbx <firdaus.sati51@gmail.cm>",
+  "author": "krsbx",
   "license": "MIT",
   "scripts": {
     "backend": "cd backend && yarn dev",
     "frontend": "cd frontend && yarn dev",
-    "dev": "concurrently \"yarn backend\"",
+    "dev": "concurrently \"yarn backend\" \"yarn frontend\"",
     "prepare": "husky install"
   },
   "devDependencies": {
@@ -35,6 +35,10 @@
       "eslint --fix"
     ],
     "backend/src/**/*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "frontend/src/**/*.{ts,tsx}": [
       "prettier --write",
       "eslint --fix"
     ]
