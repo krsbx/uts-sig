@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import fs from 'fs-extra';
 import _ from 'lodash';
 import path from 'path';
 import { SEED_HISTORY_NAME } from '../seeder/constants';
@@ -19,10 +20,12 @@ const main = async (prisma: PrismaClient) => {
   }
 
   try {
+    const dirs = (await fs.readdir(__dirname)).filter(
+      (fileName) => fileName.split('.').pop() === 'sql'
+    );
+
     const sqls = await joinSqlFiles(
-      path.join(__dirname, 'KANTORPLN_PT_50K.sql'),
-      path.join(__dirname, 'KANTORPOS_PT_50K.sql'),
-      path.join(__dirname, 'SPBU_PT_50K.sql')
+      ...dirs.map((name) => path.join(__dirname, name))
     );
 
     if (!sqls) return;

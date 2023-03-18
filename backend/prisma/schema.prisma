@@ -6,10 +6,10 @@ generator client {
 generator repo {
   provider = "prisma-repo"
   output   = "../src/repository"
-  query    = true
-  warn     = true
-  info     = true
-  error    = true
+  info     = "true"
+  query    = "true"
+  error    = "true"
+  warn     = "true"
 }
 
 datasource db {
@@ -19,43 +19,43 @@ datasource db {
 }
 
 model KantorPln {
-  gid      Int                                  @id @default(autoincrement())
-  namobj   String?                              @db.VarChar(50)
-  fcode    String?                              @db.VarChar(50)
-  remark   String?                              @db.VarChar(250)
-  srs_id   String?                              @db.VarChar(50)
-  lcode    String?                              @db.VarChar(50)
-  metadata String?                              @db.VarChar(250)
-  geom     Unsupported("geometry(Point, 4326)")
+  gid      Int                                   @id @default(autoincrement())
+  namobj   String?                               @db.VarChar(50)
+  fcode    String?                               @db.VarChar(50)
+  remark   String?                               @db.VarChar(250)
+  srs_id   String?                               @db.VarChar(50)
+  lcode    String?                               @db.VarChar(50)
+  metadata String?                               @db.VarChar(250)
+  geom     Unsupported("geometry(Point, 4326)")?
 
   @@index([geom], type: Gist)
   @@map("kantorpln_pt_50k")
 }
 
 model KantorPos {
-  gid      Int                                  @id @default(autoincrement())
-  namobj   String?                              @db.VarChar(50)
-  fcode    String?                              @db.VarChar(50)
+  gid      Int                                   @id @default(autoincrement())
+  namobj   String?                               @db.VarChar(50)
+  fcode    String?                               @db.VarChar(50)
   jnkpos   Float?
-  remark   String?                              @db.VarChar(250)
-  srs_id   String?                              @db.VarChar(50)
-  lcode    String?                              @db.VarChar(50)
-  metadata String?                              @db.VarChar(250)
-  geom     Unsupported("geometry(Point, 4326)")
+  remark   String?                               @db.VarChar(250)
+  srs_id   String?                               @db.VarChar(50)
+  lcode    String?                               @db.VarChar(50)
+  metadata String?                               @db.VarChar(250)
+  geom     Unsupported("geometry(Point, 4326)")?
 
   @@index([geom], type: Gist)
   @@map("kantorpos_pt_50k")
 }
 
 model Spbu {
-  gid      Int                                  @id @default(autoincrement())
-  namobj   String?                              @db.VarChar(50)
-  fcode    String?                              @db.VarChar(50)
-  remark   String?                              @db.VarChar(250)
-  srs_id   String?                              @db.VarChar(50)
-  lcode    String?                              @db.VarChar(50)
-  metadata String?                              @db.VarChar(250)
-  geom     Unsupported("geometry(Point, 4326)")
+  gid      Int                                   @id @default(autoincrement())
+  namobj   String?                               @db.VarChar(50)
+  fcode    String?                               @db.VarChar(50)
+  remark   String?                               @db.VarChar(250)
+  srs_id   String?                               @db.VarChar(50)
+  lcode    String?                               @db.VarChar(50)
+  metadata String?                               @db.VarChar(250)
+  geom     Unsupported("geometry(Point, 4326)")?
 
   @@index([geom], type: Gist)
   @@map("spbu_pt_50k")
@@ -68,4 +68,74 @@ model SeedHistory {
   updatedAt DateTime @updatedAt
 
   @@map("seed-history")
+}
+
+model AdministrasiKabupaten {
+  gid        Int                                          @id @default(autoincrement())
+  kdppum     String?                                      @db.VarChar(2)
+  namobj     String?                                      @db.VarChar(50)
+  remark     String?                                      @db.VarChar(250)
+  kdpbps     String?                                      @db.VarChar(2)
+  fcode      String?                                      @db.VarChar(50)
+  luaswh     Decimal?                                     @db.Decimal
+  uupp       String?                                      @db.VarChar(50)
+  srs_id     String?                                      @db.VarChar(50)
+  lcode      String?                                      @db.VarChar(50)
+  metadata   String?                                      @db.VarChar(50)
+  kdebps     String?                                      @db.VarChar(50)
+  kdepum     String?                                      @db.VarChar(50)
+  kdcbps     String?                                      @db.VarChar(50)
+  kdcpum     String?                                      @db.VarChar(50)
+  kdbbps     String?                                      @db.VarChar(50)
+  kdbpum     String?                                      @db.VarChar(50)
+  wadmkd     String?                                      @db.VarChar(50)
+  wiadkd     String?                                      @db.VarChar(50)
+  wadmkc     String?                                      @db.VarChar(50)
+  wiadkc     String?                                      @db.VarChar(50)
+  wadmkk     String?                                      @db.VarChar(50)
+  wiadkk     String?                                      @db.VarChar(50)
+  wadmpr     String?                                      @db.VarChar(50)
+  wiadpr     String?                                      @db.VarChar(50)
+  tipadm     Float?
+  shape_leng Decimal?                                     @db.Decimal
+  shape_area Decimal?                                     @db.Decimal
+  geom       Unsupported("geometry(MultiPolygon, 4326)")?
+
+  @@index([geom], type: Gist)
+  @@map("administrasikabupaten_ar_50k")
+}
+
+model AdministrasiKecamatan {
+  gid        Int                                          @id @default(autoincrement())
+  kdppum     String?                                      @db.VarChar(2)
+  namobj     String?                                      @db.VarChar(50)
+  remark     String?                                      @db.VarChar(250)
+  kdpbps     String?                                      @db.VarChar(2)
+  fcode      String?                                      @db.VarChar(50)
+  luaswh     Decimal?                                     @db.Decimal
+  uupp       String?                                      @db.VarChar(50)
+  srs_id     String?                                      @db.VarChar(50)
+  lcode      String?                                      @db.VarChar(50)
+  metadata   String?                                      @db.VarChar(50)
+  kdebps     String?                                      @db.VarChar(50)
+  kdepum     String?                                      @db.VarChar(50)
+  kdcbps     String?                                      @db.VarChar(50)
+  kdcpum     String?                                      @db.VarChar(50)
+  kdbbps     String?                                      @db.VarChar(50)
+  kdbpum     String?                                      @db.VarChar(50)
+  wadmkd     String?                                      @db.VarChar(50)
+  wiadkd     String?                                      @db.VarChar(50)
+  wadmkc     String?                                      @db.VarChar(50)
+  wiadkc     String?                                      @db.VarChar(50)
+  wadmkk     String?                                      @db.VarChar(50)
+  wiadkk     String?                                      @db.VarChar(50)
+  wadmpr     String?                                      @db.VarChar(50)
+  wiadpr     String?                                      @db.VarChar(50)
+  tipadm     Float?
+  shape_leng Decimal?                                     @db.Decimal
+  shape_area Decimal?                                     @db.Decimal
+  geom       Unsupported("geometry(MultiPolygon, 4326)")?
+
+  @@index([geom], type: Gist)
+  @@map("administrasikecamatan_ar_50k")
 }
