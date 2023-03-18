@@ -51,14 +51,23 @@ CREATE TABLE "seed-history" (
     CONSTRAINT "seed-history_pkey" PRIMARY KEY ("id")
 );
 
--- Add Geometry Column
+-- AddGeometryColumn
 SELECT AddGeometryColumn('','kantorpln_pt_50k','geom','4326','POINT',4);
 
--- Add Geometry Column
+-- AddGeometryColumn
 SELECT AddGeometryColumn('','kantorpos_pt_50k','geom','4326','POINT',4);
 
--- Add Geometry Column
+-- AddGeometryColumn
 SELECT AddGeometryColumn('','spbu_pt_50k','geom','4326','POINT',4);
+
+-- AlterTable
+ALTER TABLE "kantorpln_pt_50k" ALTER COLUMN "geom" SET NOT NULL;
+
+-- AlterTable
+ALTER TABLE "kantorpos_pt_50k" ALTER COLUMN "geom" SET NOT NULL;
+
+-- AlterTable
+ALTER TABLE "spbu_pt_50k" ALTER COLUMN "geom" SET NOT NULL;
 
 -- CreateIndex
 CREATE INDEX "kantorpln_pt_50k_geom_idx" ON "kantorpln_pt_50k" USING GIST ("geom");

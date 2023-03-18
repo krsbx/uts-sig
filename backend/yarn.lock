@@ -79,6 +79,15 @@
     prettier "^2.8.1"
     template-file "^6.0.1"
 
+"@krsbx/response-formatter@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@krsbx/response-formatter/-/response-formatter-1.0.0.tgz#a6c23b483be718d231a7c45f41708eef57d910e1"
+  integrity sha512-8IOvEi+LOFw9CpnvWnbZXeZrPaEMtmOQqAy6xd62JoLM7GmEiNyHjte2k+SeVaJCH0/ym9QCdYfQKbLVEfm9+w==
+  dependencies:
+    "@types/express" "^4.17.17"
+    http-status "^1.6.2"
+    lodash "^4.17.21"
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"

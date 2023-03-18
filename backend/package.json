@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@krsbx/prisma-fqp": "^0.2.8",
+    "@krsbx/response-formatter": "^1.0.0",
     "@prisma/client": "^4.11.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
