@@ -3,6 +3,15 @@ generator client {
   previewFeatures = ["postgresqlExtensions"]
 }
 
+generator repo {
+  provider = "prisma-repo"
+  output   = "../src/repository"
+  query    = true
+  warn     = true
+  info     = true
+  error    = true
+}
+
 datasource db {
   provider   = "postgresql"
   url        = env("DATABASE_URL")
