@@ -5,6 +5,9 @@ ALTER TABLE "administrasikabupaten_ar_50k" ALTER COLUMN "geom" DROP NOT NULL;
 ALTER TABLE "administrasikecamatan_ar_50k" ALTER COLUMN "geom" DROP NOT NULL;
 
 -- AlterTable
+ALTER TABLE "bangunan_ar_50k" ALTER COLUMN "geom" DROP NOT NULL;
+
+-- AlterTable
 ALTER TABLE "kantorpln_pt_50k" ALTER COLUMN "geom" DROP NOT NULL;
 
 -- AlterTable

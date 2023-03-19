@@ -94,4 +94,22 @@ router.get(
   })
 );
 
+// GET /bangunans
+router.get(
+  '/bangunans',
+  asyncMw(async (req, res) => {
+    const bangunans = await repository.Bangunan.findAll(
+      {},
+      {},
+      {
+        orderBy: 'gid',
+        order: 'ASC',
+        ...req.query,
+      }
+    );
+
+    return res.status(200).send(createResourcesResponse(req, bangunans));
+  })
+);
+
 export default router;

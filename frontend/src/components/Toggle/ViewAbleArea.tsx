@@ -4,22 +4,19 @@ import { VIEWABLE_AREA } from '../../utils/constants';
 
 const ViewAbleArea: React.FC<Props> = React.memo(
   ({ selected, setSelected }) => {
-    const changeToKabupaten = useCallback(() => {
-      if (selected === VIEWABLE_AREA.KABUPATEN) return;
+    const changeTo = useCallback(
+      (type: FrontEnd.ViewableArea) => {
+        if (selected === type) return;
 
-      setSelected(VIEWABLE_AREA.KABUPATEN);
-    }, [selected, setSelected]);
-
-    const changeToKecamatan = useCallback(() => {
-      if (selected === VIEWABLE_AREA.KECAMATAN) return;
-
-      setSelected(VIEWABLE_AREA.KECAMATAN);
-    }, [selected, setSelected]);
+        setSelected(type);
+      },
+      [selected, setSelected]
+    );
 
     return (
       <Stack direction={'row'}>
         <Button
-          onClick={changeToKabupaten}
+          onClick={() => changeTo(VIEWABLE_AREA.KABUPATEN)}
           backgroundColor={
             selected === VIEWABLE_AREA.KABUPATEN ? 'whiteAlpha.800' : 'gray.300'
           }
@@ -27,12 +24,20 @@ const ViewAbleArea: React.FC<Props> = React.memo(
           Kabupaten
         </Button>
         <Button
-          onClick={changeToKecamatan}
+          onClick={() => changeTo(VIEWABLE_AREA.KECAMATAN)}
           backgroundColor={
             selected === VIEWABLE_AREA.KECAMATAN ? 'whiteAlpha.800' : 'gray.300'
           }
         >
           Kecamatan
+        </Button>
+        <Button
+          onClick={() => changeTo(VIEWABLE_AREA.BANGUNAN)}
+          backgroundColor={
+            selected === VIEWABLE_AREA.BANGUNAN ? 'whiteAlpha.800' : 'gray.300'
+          }
+        >
+          Bangunan
         </Button>
       </Stack>
     );

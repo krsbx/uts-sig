@@ -1,30 +1,37 @@
 /* eslint-disable no-param-reassign */
 import _ from 'lodash';
 import {
-  DeleteSpbu,
-  OverwriteSpbu,
-  SetSpbu,
-  SpbuActionType,
-  SpbuReducer,
-  UpdateSpbu,
-} from '../actions-type/spbu';
-import { createPageInfo, normalizePoint, toArray } from './reducer.helper';
+  BangunanActionType,
+  BangunanReducer,
+  DeleteBangunan,
+  OverwriteBangunan,
+  SetBangunan,
+  UpdateBangunan,
+} from '../actions-type/bangunan';
+import {
+  createPageInfo,
+  normalizeMultiPolygon,
+  toArray,
+} from './reducer.helper';
 
-const initialState: SpbuReducer = {
+const initialState: BangunanReducer = {
   data: new Map(),
   page: createPageInfo(),
 };
 
 const reducer = (
   state = initialState,
-  action: SetSpbu | UpdateSpbu | OverwriteSpbu | DeleteSpbu
+  action: SetBangunan | UpdateBangunan | OverwriteBangunan | DeleteBangunan
 ) => {
   switch (action.type) {
-    case SpbuActionType.SET: {
+    case BangunanActionType.SET: {
       toArray(action.payload.data).forEach((value) => {
-        if (!_.isArray(value)) state.data.set(value.gid, normalizePoint(value));
+        if (!_.isArray(value))
+          state.data.set(value.gid, normalizeMultiPolygon(value));
         else
-          value.forEach((val) => state.data.set(val.gid, normalizePoint(val)));
+          value.forEach((val) =>
+            state.data.set(val.gid, normalizeMultiPolygon(val))
+          );
       });
 
       state.page = {
@@ -38,7 +45,7 @@ const reducer = (
       };
     }
 
-    case SpbuActionType.UPDATE: {
+    case BangunanActionType.UPDATE: {
       state.data.set(action.payload.gid, action.payload.data);
 
       return {
@@ -47,13 +54,16 @@ const reducer = (
       };
     }
 
-    case SpbuActionType.OVERWRITE: {
+    case BangunanActionType.OVERWRITE: {
       state.data.clear();
 
       toArray(action.payload.data).forEach((value) => {
-        if (!_.isArray(value)) state.data.set(value.gid, normalizePoint(value));
+        if (!_.isArray(value))
+          state.data.set(value.gid, normalizeMultiPolygon(value));
         else
-          value.forEach((val) => state.data.set(val.gid, normalizePoint(val)));
+          value.forEach((val) =>
+            state.data.set(val.gid, normalizeMultiPolygon(val))
+          );
       });
 
       state.page = action.payload.page;
@@ -64,7 +74,7 @@ const reducer = (
       };
     }
 
-    case SpbuActionType.DELETE: {
+    case BangunanActionType.DELETE: {
       state.data.delete(action.payload);
 
       return {
