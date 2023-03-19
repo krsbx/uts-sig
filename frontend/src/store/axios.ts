@@ -1,7 +1,6 @@
 import axios, { type AxiosInstance } from 'axios';
 import _ from 'lodash';
 import { Dispatch } from 'redux';
-import { ResourceKey } from '../types/axios';
 import {
   overwriteResource,
   setResource,
@@ -17,7 +16,9 @@ export const applyInterceptors = (dispatch: Dispatch) => {
     (config) => {
       if (config.headers) {
         if (_.isString(config.headers.resourceName))
-          config.resourceName = <ResourceKey>config.headers.resourceName;
+          config.resourceName = <FrontEnd.ResourceKey>(
+            config.headers.resourceName
+          );
 
         if (_.isBoolean(config.headers.overwrite))
           config.overwrite = config.headers.overwrite;

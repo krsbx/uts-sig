@@ -1,5 +1,4 @@
 import { Dispatch } from 'redux';
-import { ResourceKey } from '../../types/axios';
 import { RESOURCE_PATH } from '../../utils/constants';
 import {
   ResourceActionType,
@@ -7,7 +6,7 @@ import {
 } from '../actions-type/type.helper';
 import axios from '../axios';
 
-export const setResource = <T extends ResourceKey>(
+export const setResource = <T extends FrontEnd.ResourceKey>(
   resourceName: T,
   payload: unknown
 ) => ({
@@ -15,7 +14,7 @@ export const setResource = <T extends ResourceKey>(
   payload,
 });
 
-export const updateResource = <T extends ResourceKey>(
+export const updateResource = <T extends FrontEnd.ResourceKey>(
   resourceName: T,
   payload: unknown
 ) => ({
@@ -23,7 +22,7 @@ export const updateResource = <T extends ResourceKey>(
   payload, // { gid, data }
 });
 
-export const overwriteResource = <T extends ResourceKey>(
+export const overwriteResource = <T extends FrontEnd.ResourceKey>(
   resourceName: T,
   payload: unknown
 ) => ({
@@ -31,7 +30,7 @@ export const overwriteResource = <T extends ResourceKey>(
   payload,
 });
 
-export const deleteResource = <T extends ResourceKey>(
+export const deleteResource = <T extends FrontEnd.ResourceKey>(
   resourceName: T,
   payload: unknown
 ) => ({
@@ -41,7 +40,7 @@ export const deleteResource = <T extends ResourceKey>(
 
 export const getAllData =
   <
-    T extends ResourceKey,
+    T extends FrontEnd.ResourceKey,
     U extends ResourceResponse[T]['MUTIPLE'],
     V extends U['data']
   >(
@@ -66,7 +65,7 @@ export const getAllData =
 
 export const getDataById =
   <
-    T extends ResourceKey,
+    T extends FrontEnd.ResourceKey,
     U extends ResourceResponse[T]['SINGLE'],
     V extends U['data']
   >(
@@ -92,7 +91,7 @@ export const getDataById =
 
 export const addData =
   <
-    T extends ResourceKey,
+    T extends FrontEnd.ResourceKey,
     U extends ResourceResponse[T]['SINGLE'],
     V extends U['data']
   >(
@@ -122,7 +121,7 @@ export const addData =
 
 export const updateData =
   <
-    T extends ResourceKey,
+    T extends FrontEnd.ResourceKey,
     U extends ResourceResponse[T]['SINGLE'],
     V extends U['data']
   >(
@@ -148,7 +147,7 @@ export const updateData =
   };
 
 export const deleteData =
-  <T extends ResourceKey>(resourceName: T, id: number) =>
+  <T extends FrontEnd.ResourceKey>(resourceName: T, id: number) =>
   async (dispatch: Dispatch) => {
     const urlPath = RESOURCE_PATH[resourceName];
 

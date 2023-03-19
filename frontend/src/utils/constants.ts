@@ -18,3 +18,9 @@ export const VIEWABLE_AREA = {
   KABUPATEN: 'KABUPATEN',
   KECAMATAN: 'KECAMATAN',
 } as const;
+
+export const TOGGLEABLE_OBJECT = {
+  POS: 'POS',
+  PLN: 'PLN',
+  SPBU: 'SPBU',
+} as const;

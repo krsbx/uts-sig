@@ -34,7 +34,8 @@
     "no-console": "off",
     "no-param-reassign": "warn",
     "no-shadow": "warn",
-    "default-param-last":"off"
+    "default-param-last":"off",
+    "no-use-before-define": "off"
   },
   "settings": {
     "import/parsers": {

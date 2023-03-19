@@ -2,14 +2,11 @@ import type {
   AxiosRequestConfig as OriginalAxiosRequestConfig,
   AxiosRequestHeaders as OriginalAxiosRequestHeaders,
 } from 'axios';
-import { RESOURCE_NAME } from '../utils/constants';
-
-type ResourceKey = (typeof RESOURCE_NAME)[keyof typeof RESOURCE_NAME];
 
 declare module 'axios' {
   interface AxiosRequestHeaders extends OriginalAxiosRequestHeaders {
     Authorization: string;
-    resourceName: ResourceKey;
+    resourceName: FrontEnd.ResourceKey;
     overwrite: boolean;
   }
 
@@ -21,7 +18,7 @@ declare module 'axios' {
 
   interface AxiosRequestConfig extends OriginalAxiosRequestConfig {
     headers?: AxiosRequestHeaders;
-    resourceName?: ResourceKey;
+    resourceName?: FrontEnd.ResourceKey;
     overwrite?: boolean;
   }
 }
