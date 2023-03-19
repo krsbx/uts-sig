@@ -8,6 +8,7 @@ import {
   AdministrasiKecamatanActionType,
   AdministrasiKecamatanResource,
 } from './administrasiKecamatan';
+import { BangunanActionType, BangunanResource } from './bangunan';
 import { KantorPlnActionType, KantorPlnResource } from './kantorPln';
 import { KantorPosActionType, KantorPosResource } from './kantorPos';
 import { SpbuActionType, SpbuResource } from './spbu';
@@ -51,6 +52,12 @@ export const ResourceActionType = {
     OVERWRITE_RESOURCE: AdministrasiKecamatanActionType.OVERWRITE,
     DELETE_RESOURCE: AdministrasiKecamatanActionType.DELETE,
   },
+  [RESOURCE_NAME.BANGUNAN]: {
+    SET_RESOURCE: BangunanActionType.SET,
+    UPDATE_RESOURCE: BangunanActionType.UPDATE,
+    OVERWRITE_RESOURCE: BangunanActionType.OVERWRITE,
+    DELETE_RESOURCE: BangunanActionType.DELETE,
+  },
   [RESOURCE_NAME.KANTOR_PLN]: {
     SET_RESOURCE: KantorPlnActionType.SET,
     UPDATE_RESOURCE: KantorPlnActionType.UPDATE,
@@ -88,6 +95,10 @@ export type ResourceResponse = {
   [RESOURCE_NAME.ADMINISTRASI_KECAMATAN]: {
     SINGLE: SingleResposnse<AdministrasiKecamatanResource>;
     MUTIPLE: MultipleResponse<AdministrasiKecamatanResource>;
+  };
+  [RESOURCE_NAME.BANGUNAN]: {
+    SINGLE: SingleResposnse<BangunanResource>;
+    MUTIPLE: MultipleResponse<BangunanResource>;
   };
   [RESOURCE_NAME.KANTOR_PLN]: {
     SINGLE: SingleResposnse<KantorPlnResource>;

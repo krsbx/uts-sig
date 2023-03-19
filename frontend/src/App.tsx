@@ -3,6 +3,7 @@ import { Map } from 'leaflet';
 import { createRef, useState } from 'react';
 import AreaView from './components/AreaView';
 import MapContainer from './components/MapContainer';
+import ObjectView from './components/ObjectView';
 import Toggle from './components/Toggle';
 import useResourceLoader from './hooks/useResourceLoader';
 import { VIEWABLE_AREA } from './utils/constants';
@@ -26,6 +27,7 @@ const App = () => {
       position={'relative'}
     >
       <MapContainer ref={mapRef}>
+        <ObjectView selected={objects} />
         <AreaView selected={selectedArea} />
       </MapContainer>
       <Stack position={'absolute'} zIndex={999} right={5} top={5}>

@@ -10,6 +10,7 @@ import {
   SeedHistory,
   AdministrasiKabupaten,
   AdministrasiKecamatan,
+  Bangunan,
 } from '@prisma/client';
 import _ from 'lodash';
 
@@ -65,6 +66,7 @@ export const MODELS_NAME = {
   SEED_HISTORY: 'seedHistory',
   ADMINISTRASI_KABUPATEN: 'administrasiKabupaten',
   ADMINISTRASI_KECAMATAN: 'administrasiKecamatan',
+  BANGUNAN: 'bangunan',
 } as const;
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -75,6 +77,7 @@ export type ModelStructure = {
   seedHistory: SeedHistory;
   administrasiKabupaten: AdministrasiKabupaten;
   administrasiKecamatan: AdministrasiKecamatan;
+  bangunan: Bangunan;
 };
 
 export type ModelName = keyof ModelStructure;
@@ -177,5 +180,18 @@ export type ModelTypes<T = unknown> = {
     GroupBy: Prisma.AdministrasiKecamatanGroupByOutputType;
     // @ts-ignore
     Return: Prisma.AdministrasiKecamatanGetPayload<T>;
+  };
+  bangunan: {
+    Where: Prisma.BangunanWhereInput;
+    Select: Prisma.BangunanSelect;
+    Include: unknown;
+    Create: Prisma.BangunanCreateInput | Prisma.BangunanUncheckedCreateInput;
+    Update: Prisma.BangunanUpdateInput | Prisma.BangunanUncheckedUpdateInput;
+    Cursor: unknown;
+    Order: Prisma.BangunanOrderByWithRelationInput;
+    Delegate: Prisma.BangunanDelegate<ModelDelegate>;
+    GroupBy: Prisma.BangunanGroupByOutputType;
+    // @ts-ignore
+    Return: Prisma.BangunanGetPayload<T>;
   };
 };

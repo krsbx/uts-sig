@@ -139,3 +139,20 @@ model AdministrasiKecamatan {
   @@index([geom], type: Gist)
   @@map("administrasikecamatan_ar_50k")
 }
+
+model Bangunan {
+  gid        Int      @id @default(autoincrement())
+  namobj     String?  @db.VarChar(50)
+  fcode      String?  @db.VarChar(50)
+  remark     String?  @db.VarChar(250)
+  srs_id     String?  @db.VarChar(50)
+  lcode      String?  @db.VarChar(50)
+  metadata   String?  @db.VarChar(50)
+  shape_leng Decimal? @db.Decimal
+  shape_area Decimal? @db.Decimal
+
+  geom Unsupported("geometry(MultiPolygon, 4326)")?
+
+  @@index([geom], type: Gist)
+  @@map("bangunan_ar_50k")
+}

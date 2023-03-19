@@ -8,6 +8,7 @@ const useResourceLoader = () => {
       [
         getAllData(RESOURCE_NAME.ADMINISTRASI_KABUPATEN),
         getAllData(RESOURCE_NAME.ADMINISTRASI_KECAMATAN),
+        getAllData(RESOURCE_NAME.BANGUNAN),
         getAllData(RESOURCE_NAME.KANTOR_PLN),
         getAllData(RESOURCE_NAME.KANTOR_POS),
         getAllData(RESOURCE_NAME.SPBU),
