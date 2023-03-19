@@ -3,9 +3,9 @@ import BaseRepository from './baseRepository';
 import {
   AnyRecord,
   Find,
-  MODELS_NAME,
   ModelScalarFields,
   ModelStructure,
+  MODELS_NAME,
   ModelTypes,
 } from './prisma-repo';
 import { findAllBuilder, findOneBuilder } from './query/builder';
@@ -42,7 +42,7 @@ class Spbu extends BaseRepository<
   protected static tableName = 'spbu_pt_50k';
   protected static customFields = [];
 
-  public static async getAll<
+  public static async findAll<
     Option extends Find<Select, Include, Cursor, Order, Scalar>,
     Args extends Option & { where?: Where | undefined },
     Return extends ModelTypes<Args>['spbu']['Return']

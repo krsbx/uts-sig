@@ -1,10 +1,28 @@
 import { Flex } from '@chakra-ui/react';
 import { Map } from 'leaflet';
-import { createRef } from 'react';
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { createRef, useCallback, useState } from 'react';
+import AdministrasiKabupaten from './components/AdministrasiKabupaten';
+import AdministrasiKecamatan from './components/AdministrasiKecamatan';
+import MapContainer from './components/MapContainer';
+import useResourceLoader from './hooks/useResourceLoader';
+import { VIEWABLE_AREA } from './utils/constants';
 
 const App = () => {
   const mapRef = createRef<Map>();
+  const [selectedArea, setSelectedArea] = useState<
+    (typeof VIEWABLE_AREA)[keyof typeof VIEWABLE_AREA]
+  >(VIEWABLE_AREA.KABUPATEN);
+
+  useResourceLoader();
+
+  const changeToKecamatan = useCallback(
+    () => setSelectedArea(VIEWABLE_AREA.KECAMATAN),
+    []
+  );
+  const changeToKabupaten = useCallback(
+    () => setSelectedArea(VIEWABLE_AREA.KABUPATEN),
+    []
+  );
 
   return (
     <Flex
@@ -14,27 +32,9 @@ const App = () => {
       width={'100vw'}
       height={'100vh'}
     >
-      <MapContainer
-        center={[-5.45, 105.26667]}
-        zoom={11}
-        minZoom={10}
-        maxZoom={12}
-        scrollWheelZoom={true}
-        style={{
-          width: '100%',
-          height: '100%',
-        }}
-        attributionControl={false}
-        maxBounds={[
-          [81.427274, -173.201662],
-          [-84.136577, 178.66761],
-        ]}
-        ref={mapRef}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+      <MapContainer ref={mapRef}>
+        <AdministrasiKabupaten />
+        <AdministrasiKecamatan />
       </MapContainer>
     </Flex>
   );

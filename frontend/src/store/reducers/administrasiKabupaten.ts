@@ -8,7 +8,11 @@ import {
   SetAdministrasiKabupaten,
   UpdateAdministrasiKabupaten,
 } from '../actions-type/administrasiKabupaten';
-import { createPageInfo, toArray } from './reducer.helper';
+import {
+  createPageInfo,
+  normalizeMultiPolygon,
+  toArray,
+} from './reducer.helper';
 
 const initialState: AdministrasiKabupatenReducer = {
   data: new Map(),
@@ -26,8 +30,12 @@ const reducer = (
   switch (action.type) {
     case AdministrasiKabupatenActionType.SET: {
       toArray(action.payload.data).forEach((value) => {
-        if (!_.isArray(value)) state.data.set(value.gid, value);
-        else value.forEach((val) => state.data.set(val.gid, val));
+        if (!_.isArray(value))
+          state.data.set(value.gid, normalizeMultiPolygon(value));
+        else
+          value.forEach((val) =>
+            state.data.set(val.gid, normalizeMultiPolygon(val))
+          );
       });
 
       state.page = {
@@ -35,32 +43,48 @@ const reducer = (
         ...action.payload.page,
       };
 
-      return state;
+      return {
+        ...state,
+        data: _.cloneDeep(state.data),
+      };
     }
 
     case AdministrasiKabupatenActionType.UPDATE: {
       state.data.set(action.payload.gid, action.payload.data);
 
-      return state;
+      return {
+        ...state,
+        data: _.cloneDeep(state.data),
+      };
     }
 
     case AdministrasiKabupatenActionType.OVERWRITE: {
       state.data.clear();
 
       toArray(action.payload.data).forEach((value) => {
-        if (!_.isArray(value)) state.data.set(value.gid, value);
-        else value.forEach((val) => state.data.set(val.gid, val));
+        if (!_.isArray(value))
+          state.data.set(value.gid, normalizeMultiPolygon(value));
+        else
+          value.forEach((val) =>
+            state.data.set(val.gid, normalizeMultiPolygon(val))
+          );
       });
 
       state.page = action.payload.page;
 
-      return state;
+      return {
+        ...state,
+        data: _.cloneDeep(state.data),
+      };
     }
 
     case AdministrasiKabupatenActionType.DELETE: {
       state.data.delete(action.payload);
 
-      return state;
+      return {
+        ...state,
+        data: _.cloneDeep(state.data),
+      };
     }
 
     default:

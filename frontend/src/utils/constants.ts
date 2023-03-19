@@ -13,3 +13,8 @@ export const RESOURCE_PATH = {
   [RESOURCE_NAME.KANTOR_POS]: 'kantor-poss',
   [RESOURCE_NAME.SPBU]: 'spbus',
 } as const;
+
+export const VIEWABLE_AREA = {
+  KABUPATEN: 'KABUPATEN',
+  KECAMATAN: 'KECAMATAN',
+} as const;
