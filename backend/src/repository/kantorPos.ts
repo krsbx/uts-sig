@@ -3,9 +3,9 @@ import BaseRepository from './baseRepository';
 import {
   AnyRecord,
   Find,
-  MODELS_NAME,
   ModelScalarFields,
   ModelStructure,
+  MODELS_NAME,
   ModelTypes,
 } from './prisma-repo';
 import { findAllBuilder, findOneBuilder } from './query/builder';
@@ -13,22 +13,22 @@ import { findAllBuilder, findOneBuilder } from './query/builder';
 // This type will be used if you want to extends the functions in KantorPos Class
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-type Where = ModelTypes[typeof MODELS_NAME.KANTORPOS]['Where'];
-type Select = ModelTypes[typeof MODELS_NAME.KANTORPOS]['Select'];
-type Include = ModelTypes[typeof MODELS_NAME.KANTORPOS]['Include'];
-type Create = ModelTypes[typeof MODELS_NAME.KANTORPOS]['Create'];
-type Update = ModelTypes[typeof MODELS_NAME.KANTORPOS]['Update'];
-type Cursor = ModelTypes[typeof MODELS_NAME.KANTORPOS]['Cursor'];
-type Order = ModelTypes[typeof MODELS_NAME.KANTORPOS]['Order'];
-type Delegate = ModelTypes[typeof MODELS_NAME.KANTORPOS]['Delegate'];
-type GroupBy = ModelTypes[typeof MODELS_NAME.KANTORPOS]['GroupBy'];
-type Scalar = ModelScalarFields<typeof MODELS_NAME.KANTORPOS>;
-type Model = ModelStructure[typeof MODELS_NAME.KANTORPOS];
+type Where = ModelTypes[typeof MODELS_NAME.KANTOR_POS]['Where'];
+type Select = ModelTypes[typeof MODELS_NAME.KANTOR_POS]['Select'];
+type Include = ModelTypes[typeof MODELS_NAME.KANTOR_POS]['Include'];
+type Create = ModelTypes[typeof MODELS_NAME.KANTOR_POS]['Create'];
+type Update = ModelTypes[typeof MODELS_NAME.KANTOR_POS]['Update'];
+type Cursor = ModelTypes[typeof MODELS_NAME.KANTOR_POS]['Cursor'];
+type Order = ModelTypes[typeof MODELS_NAME.KANTOR_POS]['Order'];
+type Delegate = ModelTypes[typeof MODELS_NAME.KANTOR_POS]['Delegate'];
+type GroupBy = ModelTypes[typeof MODELS_NAME.KANTOR_POS]['GroupBy'];
+type Scalar = ModelScalarFields<typeof MODELS_NAME.KANTOR_POS>;
+type Model = ModelStructure[typeof MODELS_NAME.KANTOR_POS];
 /*  eslint-enable @typescript-eslint/no-unused-vars */
 
 // @ts-ignore
 class KantorPos extends BaseRepository<
-  (typeof MODELS_NAME)['KANTORPOS'],
+  (typeof MODELS_NAME)['KANTOR_POS'],
   Where,
   Select,
   Include,
@@ -38,7 +38,7 @@ class KantorPos extends BaseRepository<
   Order,
   Delegate,
   Scalar
->(MODELS_NAME.KANTORPOS) {
+>(MODELS_NAME.KANTOR_POS) {
   protected static tableName = 'kantorpos_pt_50k';
   protected static customFields = ['jnkpos'];
 
