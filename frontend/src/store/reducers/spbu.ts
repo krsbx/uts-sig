@@ -31,13 +31,19 @@ const reducer = (
         ...action.payload.page,
       };
 
-      return state;
+      return {
+        ...state,
+        data: _.cloneDeep(state.data),
+      };
     }
 
     case SpbuActionType.UPDATE: {
       state.data.set(action.payload.gid, action.payload.data);
 
-      return state;
+      return {
+        ...state,
+        data: _.cloneDeep(state.data),
+      };
     }
 
     case SpbuActionType.OVERWRITE: {
@@ -50,13 +56,19 @@ const reducer = (
 
       state.page = action.payload.page;
 
-      return state;
+      return {
+        ...state,
+        data: _.cloneDeep(state.data),
+      };
     }
 
     case SpbuActionType.DELETE: {
       state.data.delete(action.payload);
 
-      return state;
+      return {
+        ...state,
+        data: _.cloneDeep(state.data),
+      };
     }
 
     default:

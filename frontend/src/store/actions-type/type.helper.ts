@@ -1,3 +1,4 @@
+import { LatLngTuple } from 'leaflet';
 import { RESOURCE_NAME } from '../../utils/constants';
 import {
   AdministrasiKabupatenActionType,
@@ -11,16 +12,20 @@ import { KantorPlnActionType, KantorPlnResource } from './kantorPln';
 import { KantorPosActionType, KantorPosResource } from './kantorPos';
 import { SpbuActionType, SpbuResource } from './spbu';
 
-export type GeometryCoordinates = [number, number] | [number, number, number];
+export type GeometryCoordinates = LatLngTuple;
 
 export type GeometryResource<T> = {
   Point: T & {
-    type: 'Point';
-    coordinates: GeometryCoordinates;
+    geom: {
+      type: 'Point';
+      coordinates: GeometryCoordinates;
+    };
   };
   Multipolygon: T & {
-    type: 'Multipolygon';
-    coordinates: [[GeometryCoordinates[]]];
+    geom: {
+      type: 'Multipolygon';
+      coordinates: GeometryCoordinates[][][];
+    };
   };
 };
 

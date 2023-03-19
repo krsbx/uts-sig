@@ -8,7 +8,7 @@ import {
   SetKantorPos,
   UpdateKantorPos,
 } from '../actions-type/kantorPos';
-import { createPageInfo, toArray } from './reducer.helper';
+import { createPageInfo, normalizePoint, toArray } from './reducer.helper';
 
 const initialState: KantorPosReducer = {
   data: new Map(),
@@ -22,8 +22,9 @@ const reducer = (
   switch (action.type) {
     case KantorPosActionType.SET: {
       toArray(action.payload.data).forEach((value) => {
-        if (!_.isArray(value)) state.data.set(value.gid, value);
-        else value.forEach((val) => state.data.set(val.gid, val));
+        if (!_.isArray(value)) state.data.set(value.gid, normalizePoint(value));
+        else
+          value.forEach((val) => state.data.set(val.gid, normalizePoint(val)));
       });
 
       state.page = {
@@ -31,32 +32,45 @@ const reducer = (
         ...action.payload.page,
       };
 
-      return state;
+      return {
+        ...state,
+        data: _.cloneDeep(state.data),
+      };
     }
 
     case KantorPosActionType.UPDATE: {
       state.data.set(action.payload.gid, action.payload.data);
 
-      return state;
+      return {
+        ...state,
+        data: _.cloneDeep(state.data),
+      };
     }
 
     case KantorPosActionType.OVERWRITE: {
       state.data.clear();
 
       toArray(action.payload.data).forEach((value) => {
-        if (!_.isArray(value)) state.data.set(value.gid, value);
-        else value.forEach((val) => state.data.set(val.gid, val));
+        if (!_.isArray(value)) state.data.set(value.gid, normalizePoint(value));
+        else
+          value.forEach((val) => state.data.set(val.gid, normalizePoint(val)));
       });
 
       state.page = action.payload.page;
 
-      return state;
+      return {
+        ...state,
+        data: _.cloneDeep(state.data),
+      };
     }
 
     case KantorPosActionType.DELETE: {
       state.data.delete(action.payload);
 
-      return state;
+      return {
+        ...state,
+        data: _.cloneDeep(state.data),
+      };
     }
 
     default:
