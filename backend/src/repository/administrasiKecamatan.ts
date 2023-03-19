@@ -3,9 +3,9 @@ import BaseRepository from './baseRepository';
 import {
   AnyRecord,
   Find,
-  MODELS_NAME,
   ModelScalarFields,
   ModelStructure,
+  MODELS_NAME,
   ModelTypes,
 } from './prisma-repo';
 import { findAllBuilder, findOneBuilder } from './query/builder';
@@ -14,23 +14,23 @@ import { AREA_EXTRA_FIELDS } from './query/constant';
 // This type will be used if you want to extends the functions in AdministrasiKecamatan Class
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-type Where = ModelTypes[typeof MODELS_NAME.ADMINISTRASIKECAMATAN]['Where'];
-type Select = ModelTypes[typeof MODELS_NAME.ADMINISTRASIKECAMATAN]['Select'];
-type Include = ModelTypes[typeof MODELS_NAME.ADMINISTRASIKECAMATAN]['Include'];
-type Create = ModelTypes[typeof MODELS_NAME.ADMINISTRASIKECAMATAN]['Create'];
-type Update = ModelTypes[typeof MODELS_NAME.ADMINISTRASIKECAMATAN]['Update'];
-type Cursor = ModelTypes[typeof MODELS_NAME.ADMINISTRASIKECAMATAN]['Cursor'];
-type Order = ModelTypes[typeof MODELS_NAME.ADMINISTRASIKECAMATAN]['Order'];
+type Where = ModelTypes[typeof MODELS_NAME.ADMINISTRASI_KECAMATAN]['Where'];
+type Select = ModelTypes[typeof MODELS_NAME.ADMINISTRASI_KECAMATAN]['Select'];
+type Include = ModelTypes[typeof MODELS_NAME.ADMINISTRASI_KECAMATAN]['Include'];
+type Create = ModelTypes[typeof MODELS_NAME.ADMINISTRASI_KECAMATAN]['Create'];
+type Update = ModelTypes[typeof MODELS_NAME.ADMINISTRASI_KECAMATAN]['Update'];
+type Cursor = ModelTypes[typeof MODELS_NAME.ADMINISTRASI_KECAMATAN]['Cursor'];
+type Order = ModelTypes[typeof MODELS_NAME.ADMINISTRASI_KECAMATAN]['Order'];
 type Delegate =
-  ModelTypes[typeof MODELS_NAME.ADMINISTRASIKECAMATAN]['Delegate'];
-type GroupBy = ModelTypes[typeof MODELS_NAME.ADMINISTRASIKECAMATAN]['GroupBy'];
-type Scalar = ModelScalarFields<typeof MODELS_NAME.ADMINISTRASIKECAMATAN>;
-type Model = ModelStructure[typeof MODELS_NAME.ADMINISTRASIKECAMATAN];
+  ModelTypes[typeof MODELS_NAME.ADMINISTRASI_KECAMATAN]['Delegate'];
+type GroupBy = ModelTypes[typeof MODELS_NAME.ADMINISTRASI_KECAMATAN]['GroupBy'];
+type Scalar = ModelScalarFields<typeof MODELS_NAME.ADMINISTRASI_KECAMATAN>;
+type Model = ModelStructure[typeof MODELS_NAME.ADMINISTRASI_KECAMATAN];
 /*  eslint-enable @typescript-eslint/no-unused-vars */
 
 // @ts-ignore
 class AdministrasiKecamatan extends BaseRepository<
-  (typeof MODELS_NAME)['ADMINISTRASIKECAMATAN'],
+  (typeof MODELS_NAME)['ADMINISTRASI_KECAMATAN'],
   Where,
   Select,
   Include,
@@ -40,7 +40,7 @@ class AdministrasiKecamatan extends BaseRepository<
   Order,
   Delegate,
   Scalar
->(MODELS_NAME.ADMINISTRASIKECAMATAN) {
+>(MODELS_NAME.ADMINISTRASI_KECAMATAN) {
   protected static tableName = 'administrasikecamatan_ar_50k';
   protected static customFields = AREA_EXTRA_FIELDS;
 

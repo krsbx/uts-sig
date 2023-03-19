@@ -5,10 +5,11 @@
   "repository": "git@github.com:krsbx/uts-sig.git",
   "author": "krsbx",
   "license": "MIT",
+  "private": true,
   "scripts": {
-    "backend": "cd backend && yarn dev",
-    "frontend": "cd frontend && yarn dev",
-    "dev": "concurrently \"yarn backend\" \"yarn frontend\"",
+    "dev:backend": "cd backend && yarn dev",
+    "dev:frontend": "cd frontend && yarn dev",
+    "devs": "concurrently \"yarn dev:backend\" \"yarn dev:frontend\"",
     "prepare": "husky install"
   },
   "devDependencies": {
@@ -29,6 +30,7 @@
     "prettier": "^2.8.4",
     "rimraf": "^4.4.0"
   },
+  "workspaces": ["backend", "frontend"],
   "lint-staged": {
     "backend/prisma/**/*.{ts,tsx}": [
       "prettier --write",
