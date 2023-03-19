@@ -27,7 +27,7 @@
     "class-methods-use-this": "off",
     "consistent-return": "off",
     "lines-between-class-members": "off",
-    "import/no-cycle":"warn",
+    "import/no-cycle":"off",
     "no-plusplus":"off",
     "no-underscore-dangle": "off",
     "no-useless-constructor": "off",
