@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { CircleMarker, Popup } from 'react-leaflet';
+import { CircleMarker, Tooltip } from 'react-leaflet';
 import { useSelector } from 'react-redux';
 import { getSpbuDatas } from '../store/selectors/spbu';
 
@@ -24,7 +24,7 @@ const Spbu = () => {
           radius={3}
           key={`spbu-${place.gid}`}
         >
-          <Popup>{place.namobj}</Popup>
+          <Tooltip>{place.namobj}</Tooltip>
         </CircleMarker>
       ))}
     </React.Fragment>

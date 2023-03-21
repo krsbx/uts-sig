@@ -5,9 +5,9 @@ import {
   CircleMarker,
   Polygon,
   Polyline,
-  Popup,
   Rectangle,
   TileLayer,
+  Tooltip,
 } from 'react-leaflet';
 
 const Area = () => {
@@ -73,7 +73,7 @@ const Area = () => {
         pathOptions={redOptions}
         radius={20}
       >
-        <Popup>Popup in CircleMarker</Popup>
+        <Tooltip>Tooltip in CircleMarker</Tooltip>
       </CircleMarker>
       <Polyline pathOptions={limeOptions} positions={polyline} />
       <Polyline pathOptions={limeOptions} positions={multiPolyline} />

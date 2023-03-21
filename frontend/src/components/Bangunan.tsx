@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { useMemo } from 'react';
-import { Polygon, Popup } from 'react-leaflet';
+import { Polygon, Tooltip } from 'react-leaflet';
 import { useSelector } from 'react-redux';
 import { getBangunanDatas } from '../store/selectors/bangunan';
 
@@ -30,7 +30,7 @@ const Bangunan = () => {
                 positions={coord}
                 key={`bangunan-${place.gid}-${index}`}
               >
-                <Popup>{place.remark}</Popup>
+                <Tooltip>{place.remark}</Tooltip>
               </Polygon>
             ))}
           </React.Fragment>

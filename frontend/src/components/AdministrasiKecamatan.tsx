@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React, { useMemo } from 'react';
-import { Polygon, Popup } from 'react-leaflet';
+import { Polygon, Tooltip } from 'react-leaflet';
 import { useSelector } from 'react-redux';
 import { getAdministrasiKecamatanDatas } from '../store/selectors/administrasiKecamatan';
 
@@ -29,7 +29,7 @@ const AdministrasiKecamatan = () => {
                 positions={coord}
                 key={`kecamatan-${place.gid}-${index}`}
               >
-                <Popup>{place.namobj}</Popup>
+                <Tooltip>{place.namobj}</Tooltip>
               </Polygon>
             ))}
           </React.Fragment>

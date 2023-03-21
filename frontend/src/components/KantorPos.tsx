@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { CircleMarker, Popup } from 'react-leaflet';
+import { CircleMarker, Tooltip } from 'react-leaflet';
 import { useSelector } from 'react-redux';
 import { getKantorPosDatas } from '../store/selectors/kantorPos';
 
@@ -24,7 +24,7 @@ const KantorPos = () => {
           radius={3}
           key={`pos-${place.gid}`}
         >
-          <Popup>{place.namobj}</Popup>
+          <Tooltip>{place.namobj}</Tooltip>
         </CircleMarker>
       ))}
     </React.Fragment>
