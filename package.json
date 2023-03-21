@@ -7,9 +7,16 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev:backend": "cd backend && yarn dev",
-    "dev:frontend": "cd frontend && yarn dev",
-    "devs": "concurrently \"yarn dev:backend\" \"yarn dev:frontend\"",
+    "start:backend": "yarn workspace backend start",
+    "start:frontend": "yarn workspace frontend preview --host",
+    "start": "concurrently \"yarn start:backend\" \"yarn start:frontend --port 3000\"",
+    "build": "yarn workspaces run build",
+    "build-start": "yarn build && yarn start",
+    "dev:backend": "yarn workspace backend dev",
+    "dev:frontend": "yarn workspace frontend dev",
+    "dev": "concurrently \"yarn dev:backend\" \"yarn dev:frontend\"",
+    "migrate": "yarn workspace backend run migrate",
+    "seed": "yarn workspace backend seed",
     "prepare": "husky install"
   },
   "devDependencies": {
